@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+%html
+%head
+  %titleТестовое задание
+  = stylesheet_link_tag    "application", :media => "all"
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+%body
+  #header
+    %h1 Тестовое задание
+
+  #leftColumn
+    %li
+      %a{:href => "#", :title => "Войти"} Войти
+    %li
+      %a{:href => "#", :title => "Зарегистрироваться"} Зарегистрироваться
+
+    %h2 Разделы
+    %ul
+      %li
+        %a{:href => "#", :title => "Добавить статью"} Добавить статью
+      %li
+        %a{:href => "#", :title => "Мои посты"} Мои посты
+      %li
+        %a{:href => "#", :title => "Задание по верстке"} Задание по верстке
+
+    #tags
+      %h2 Облако тегов
+      %a{:href => "#", :title => "XHTML"} XHTML
+      %a{:href => "#", :title => "CSS"} CSS
+      %a{:href => "#", :title => "Tutorials"} Tutorials
+      %a{:href => "#", :title => "The CSS Tinderbox"} The CSS Tinderbox
+
+  #centerColumn
+    = yield
+

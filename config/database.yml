@@ -13,12 +13,12 @@
 # gem 'pg'
 #
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: testjuniordev_development
-  pool: 5
-  username: itsnikolay
-  password: secret
+    adapter: postgresql
+    database: testjuniordev_development
+    username: itsnikolay
+    password: "secret"
+    host: localhost
+    encoding: LATIN1
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -39,17 +39,19 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: postgresql
-  encoding: unicode
-  database: testjuniordev_test
-  pool: 5
-  username: itsnikolay
-  password: secret
+    adapter: postgresql
+    database: testjuniordev_test
+    username: itsnikolay
+    password: "secret"
+    host: localhost
+    encoding: LATIN1
+
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: testjuniordev_production
-  pool: 5
-  username: itsnikolay
-  password: secret
+    adapter: postgresql
+    database: testjuniordev_production
+    username: itsnikolay
+    password: "secret"
+    host: localhost
+    encoding: LATIN1
+
