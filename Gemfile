@@ -55,3 +55,5 @@ group :development, :test do
   gem "capybara-mechanize"
   gem "faker"
 end
+
+gem "simple_form"
