@@ -1,4 +1,6 @@
 Testjuniordev::Application.routes.draw do
+  root :to => 'base#index'
+
   #get "statics/index"
 
   root :to => 'statics#index'

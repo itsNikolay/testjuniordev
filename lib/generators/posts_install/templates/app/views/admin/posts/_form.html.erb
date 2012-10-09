@@ -1,0 +1,22 @@
+  <%= simple_form_for([:admin, @post], :html => {:class => 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title, :input_html => { :maxlength => 80 }, input_html: { class: 'span7' } %>
+    <%= f.input :slug, input_html: { class: 'span7' } %>
+    <%= f.input :description, input_html: { class: 'span7', rows: "3" } %>
+    <div class="control-group">
+    <label class="control-label" for="inputEmail">Text</label>
+    <div class="controls">
+    <%= f.cktext_area :text, toolbar: 'Full', width: 800, height: 400 %>
+    </div>
+    </div>
+
+    <%= f.input :published, inline_label: 'Yes, publish that' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn-primary' %>
+  </div>
+  <% end %>
+
