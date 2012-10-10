@@ -18,7 +18,7 @@
   - @posts.each do |post|
     %tr
       %td= post.title
-      %td= post.text
+      %td= post.text[0..100]
       %td= post.published
       %td= post.created_at
       %td= post.user.email

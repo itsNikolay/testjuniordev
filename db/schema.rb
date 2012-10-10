@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(:version => 20121010133615) do
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "text"
-    t.boolean  "published"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "published",  :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.integer  "user_id"
   end
 
