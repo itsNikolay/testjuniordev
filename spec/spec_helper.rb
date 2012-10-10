@@ -79,3 +79,8 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 end
+
+require 'factory_girl'
+Dir.glob(File.dirname(__FILE__) + "/factories/*").each do |factory|
+     require factory
+   end

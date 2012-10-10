@@ -4,7 +4,8 @@
   .form-inputs
     = f.input :title
     = f.input :text
-    = f.input :published
+    - if @post.new_record?
+      = f.input :published, input_html: { checked: true }
     = f.input :created_at
 
   .form-actions

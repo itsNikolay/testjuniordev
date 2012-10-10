@@ -9,8 +9,6 @@ describe Post do
                      text: post.text, published: post.published, created_at: post.created_at )
   end
 
-  after(:all) { @post.delete }
-
   subject { @post }
 
   it { should respond_to(:title) }

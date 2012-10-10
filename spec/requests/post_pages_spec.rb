@@ -3,10 +3,11 @@ require 'spec_helper'
 describe "Post pages" do
 
   let(:user) { FactoryGirl.create(:user) }
-  let(:anotherUser) { FactoryGirl.create(:user, email: "example@example.com") }
+  let(:anotheruser) { FactoryGirl.create(:anotheruser) }
   let(:post) { FactoryGirl.create(:post) }
-  let(:yesterdayPost) { FactoryGirl.create(:post, title: "Title for post 2", created_at: Date.yesterday) }
-  let(:anoterUserPost) { FactoryGirl.create(:post, user: anotherUser) }
+  let(:yesterdaypost) { FactoryGirl.create(:yesterdaypost) }
+  let(:unpublishedpost) { FactoryGirl.create(:unpublishedpost) }
+  let(:post2) { FactoryGirl.create(:post2) }
 
   before(:each) { as_user(user)}
 
@@ -63,23 +64,36 @@ describe "Post pages" do
 
 
   describe "post destruction" do
-    before { FactoryGirl.create(:post) }
-    before { visit posts_path }
+    describe "should not delete published post" do
+      before { FactoryGirl.create(:post) }
+      before { visit posts_path }
+      it "should not delete a post" do
+        expect { click_link "Destroy" }.to change(Post, :count).by(0)
+      end
+    end
 
-    it "should delete a micropost" do
-      expect { click_link "Destroy" }.to change(Post, :count).by(-1)
+    describe "should delete a unpublished post" do
+      before { FactoryGirl.create(:unpublishedpost) }
+      before { visit posts_path }
+      it "should delete a post" do
+        expect { click_link "Destroy" }.to change(Post, :count).by(-1)
+      end
     end
   end
 
-  it "has just today posts on main page" do
-    visit root_path
-    page.has_content?(post.title)
-    page.has_no_content?(yesterdayPost.title)
+  describe "today posts" do
+    before { FactoryGirl.create(:post) }
+    before { FactoryGirl.create(:yesterdaypost) }
+    before { visit root_path }
+    it "has just today posts on main page" do
+      page.should have_content(post.title)
+      page.should_not have_content(yesterdaypost.title)
+    end
   end
 
   describe "permissons for autorized users" do
     it "can be edit by its owner publisher of the post" do
-      as_user(anotherUser)
+      as_user(anotheruser)
       visit edit_post_path(post)
       page.has_content?("The Post can edit only its own publisher.")
       current_path.should == root_path
@@ -87,10 +101,24 @@ describe "Post pages" do
   end
 
   describe "myposts page" do
+    before { FactoryGirl.create(:post2) }
+    before { FactoryGirl.create(:post) }
     it "should have listing of current user posts" do
       visit myposts_path
       page.has_content?(post.title)
-      page.has_no_content?(anoterUserPost.title)
+      page.should_not have_content(post2.title)
+
+    end
+  end
+
+  describe "published posts" do
+    before { FactoryGirl.create(:unpublishedpost) }
+    it "should not allow edit published value during editing and publish after editing" do
+      visit edit_post_path(unpublishedpost)
+      page.should have_no_selector(:published)
+      click_button "Update Post"
+      page.should have_content(unpublishedpost.title)
+      page.should have_content("true")
     end
   end
 

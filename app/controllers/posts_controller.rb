@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def today
-    @posts = Post.today.page(params[:page]).per(5)
+    @posts = Post.today.published.page(params[:page]).per(5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -34,6 +34,9 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    @commentable = @post
+    @comments = @commentable.comments
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -55,6 +58,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+
   end
 
   # POST /posts
@@ -78,6 +82,7 @@ class PostsController < ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
+    @post.published = true
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -94,16 +99,22 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
 
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
-    end
+     respond_to do |format|
+      if @post.published == false
+        @post.destroy
+        format.html { redirect_to posts_url }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to posts_url, alert: 'You can not delete published post.' }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
   end
+end
 
 private
   def postOwner?
      redirect_to root_path, alert: 'The Post can edit only its own publisher.' unless Post.find(params[:id]).user_id == current_user.id
   end
+
 end
