@@ -9,23 +9,25 @@
     %th User
     %th Comments
     %th Published?
+    %th Unpublish!
     %th
     %th
     %th
-
-  - @posts.each do |post|
-    %tr
-      %td= post.title
-      %td= post.text
-      %td= post.published
-      %td= post.created_at
-      %td= post.user.email
-      %td= post.comments.count
-      %td= post.published
-      %td= link_to 'Show', post
-      %td= link_to 'Edit', edit_post_path(post)
-      %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
-
+  = form_tag published_posts_path, :method => :put do
+    - @posts.each do |post|
+      %tr
+        %td= post.title
+        %td= post.text
+        %td= post.published
+        %td= post.created_at
+        %td= post.user.email
+        %td= post.comments.count
+        %td= post.published
+        %td= check_box_tag "post_ids[]", post.id if post.published == false
+        %td= link_to 'Show', post
+        %td= link_to 'Edit', edit_post_path(post)
+        %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
+    = submit_tag "Mark as Publish"
 %br
 
 = paginate @posts

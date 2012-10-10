@@ -3,6 +3,11 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show, :today]
   before_filter :postOwner?, only: [:edit, :update, :destroy]
 
+  def published
+    Post.update_all(["published=?", true], :id => params[:post_ids])
+    redirect_to myposts_path, notice: 'Posts was successfully unpublished.'
+  end
+
   def myposts
     @posts = Post.by_current_user(current_user).page(params[:page]).per(5)
 
@@ -110,6 +115,8 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
   end
+
+
 end
 
 private

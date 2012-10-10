@@ -1,8 +1,13 @@
 Testjuniordev::Application.routes.draw do
 
   resources :posts do
+    collection do
+      put :published
+    end
     resources :comments
   end
+
+  #map.resources :posts, :collection => { :published => :put }
 
   devise_for :users
 

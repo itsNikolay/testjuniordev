@@ -122,5 +122,15 @@ describe "Post pages" do
     end
   end
 
+  describe "mark unpublished posts to published" do
+    before { FactoryGirl.create(:unpublishedpost) }
+    it "should have checkbox for publish post" do
+      visit myposts_path
+      check 'post_ids_'
+      click_on "Mark as Publish"
+      page.should have_content "true"
+    end
+  end
+
 
 end
