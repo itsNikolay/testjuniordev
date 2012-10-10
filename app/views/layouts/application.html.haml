@@ -16,11 +16,11 @@
     %h2 Разделы
     %ul
       %li
-        %a{:href => "#", :title => "Добавить статью"} Добавить статью
+        = link_to 'Добавить статью', new_post_path
       %li
-        %a{:href => "#", :title => "Мои посты"} Мои посты
+        = link_to "Мои посты", myposts_path
       %li
-        %a{:href => "#", :title => "Задание по верстке"} Задание по верстке
+        = link_to "Задание по верстке", statics_index_path
 
     #tags
       %h2 Облако тегов

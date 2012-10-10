@@ -1,11 +1,13 @@
 Testjuniordev::Application.routes.draw do
+  resources :posts
+
   devise_for :users
 
-  root :to => 'base#index'
+  #match 'statics/:action', :controller => "statics"
+  get "statics/index"
+  match "myposts" => "posts#myposts"
 
-  #get "statics/index"
-
-  root :to => 'statics#index'
+  root :to => "posts#today"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

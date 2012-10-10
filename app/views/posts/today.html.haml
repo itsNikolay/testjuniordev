@@ -1,0 +1,27 @@
+%h1 Listing today posts
+
+%table
+  %tr
+    %th Title
+    %th Text
+    %th Published
+    %th Created at
+    %th User
+    %th
+    %th
+    %th
+
+  - @posts.each do |post|
+    %tr
+      %td= post.title
+      %td= post.text
+      %td= post.published
+      %td= post.created_at
+      %td= post.user.email
+      %td= link_to 'Show', post
+      %td= link_to 'Edit', edit_post_path(post)
+      %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= paginate @posts
