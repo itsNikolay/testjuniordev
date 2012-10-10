@@ -1,3 +1,4 @@
+- provide(:title, 'Listing posts')
 %h1 Listing posts
 
 %table
@@ -9,6 +10,7 @@
     %th User
     %th Comments
     %th Published?
+    %th Tags
     %th
     %th
     %th
@@ -22,6 +24,7 @@
       %td= post.user.email
       %td= post.comments.count
       %td= post.published
+      %td= post.tag_list
       %td= link_to 'Show', post
       %td= link_to 'Edit', edit_post_path(post)
       %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }

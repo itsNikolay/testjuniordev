@@ -3,6 +3,10 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show, :today]
   before_filter :postOwner?, only: [:edit, :update, :destroy]
 
+  def tag_cloud(*args)
+    @tags = Post.tag_counts_on(:tags)
+  end
+
   def published
     Post.update_all(["published=?", true], :id => params[:post_ids])
     redirect_to myposts_path, notice: 'Posts was successfully unpublished.'
@@ -28,6 +32,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Kaminari.paginate_array(Post.all).page(params[:page]).per(5)
+    @posts = Post.tagged_with(params[:tag]).page(params[:page]).per(5) if params[:tag]
 
     respond_to do |format|
       format.html # index.html.erb

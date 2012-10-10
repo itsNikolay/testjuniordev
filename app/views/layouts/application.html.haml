@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 %html
 %head
-  %titleТестовое задание
+  %title= content_for?(:title) ? yield(:title) : "Application"
   = stylesheet_link_tag    "application", :media => "all"
   = javascript_include_tag "application"
   = csrf_meta_tags
@@ -16,6 +16,8 @@
     %h2 Разделы
     %ul
       %li
+        = link_to 'На главную страницу', posts_path
+      %li
         = link_to 'Добавить статью', new_post_path
       %li
         = link_to "Мои посты", myposts_path
@@ -24,10 +26,10 @@
 
     #tags
       %h2 Облако тегов
-      %a{:href => "#", :title => "XHTML"} XHTML
-      %a{:href => "#", :title => "CSS"} CSS
-      %a{:href => "#", :title => "Tutorials"} Tutorials
-      %a{:href => "#", :title => "The CSS Tinderbox"} The CSS Tinderbox
+      #tag_cloud
+        - tag_cloud Post.tag_counts, %w[s m l] do |tag, css_class|
+          = link_to tag.name, tag_path(tag.name), class: css_class
+
 
   #centerColumn
     = render 'layouts/messages'

@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :published, :text, :title, :created_at
+  attr_accessible :published, :text, :title, :created_at, :tag_list
 
   validates_presence_of :text
   validates :title,  presence: true, length: { maximum: 80 }
@@ -12,5 +12,7 @@ class Post < ActiveRecord::Base
   scope :by_current_user, lambda { |user| where(user_id: user.id) }
 
   scope :published, where(published: true)
+
+  acts_as_taggable
 
 end

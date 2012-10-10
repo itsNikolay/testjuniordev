@@ -132,5 +132,38 @@ describe "Post pages" do
     end
   end
 
+  describe "act_as_taggable_on" do
+    before { FactoryGirl.create(:post, tag_list: "good, better, thebest")}
+    before { FactoryGirl.create(:post2, tag_list: "good, better, thebest")}
+    before { FactoryGirl.create(:yesterdaypost, tag_list: "another, and, other")}
+    it "should add tags to the post" do
+      visit new_post_path
+      fill_in "Title", with: post.title
+      fill_in "Text", with: post.text
+      fill_in "post_tag_list", with: "good, better, thebest"
+      click_on "Create Post"
+      page.should have_content("Post was successfully created.")
+      page.should have_content("good")
+      page.should have_content("better")
+      page.should have_content("thebest")
+    end
 
+    it "should select by tag" do
+      visit tag_path("good")
+      page.should have_content(post.title)
+      page.should have_content(post2.title)
+      page.should_not have_content(yesterdaypost.title)
+    end
+
+    it "should have tags cloud" do
+      visit root_path
+      page.should have_content("good")
+      page.should have_content("better")
+      page.should have_content("thebest")
+      page.should have_content("another")
+      page.should have_content("and")
+      page.should have_content("other")
+    end
+
+  end
 end

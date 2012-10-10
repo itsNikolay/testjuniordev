@@ -1,3 +1,4 @@
+- provide(:title, @post.title)
 %p
   %b Title:
   = @post.title
@@ -7,6 +8,10 @@
 %p
   %b Published:
   = @post.published
+
+%p
+  %b Tags:
+  = raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
 
 = link_to 'Edit', edit_post_path(@post)
 \|

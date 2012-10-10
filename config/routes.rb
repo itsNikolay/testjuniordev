@@ -13,6 +13,7 @@ Testjuniordev::Application.routes.draw do
 
   #match 'statics/:action', :controller => "statics"
   get "statics/index"
+  get 'tags/:tag', to: 'posts#index', as: :tag
   match "myposts" => "posts#myposts"
 
   root :to => "posts#today"

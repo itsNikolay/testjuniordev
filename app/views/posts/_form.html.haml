@@ -7,6 +7,9 @@
     - if @post.new_record?
       = f.input :published, input_html: { checked: true }
     = f.input :created_at
+    .field
+    = f.label :tag_list, "Tags (separated by commas)"
+    = f.text_field :tag_list
 
   .form-actions
     = f.button :submit
