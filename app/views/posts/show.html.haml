@@ -1,21 +1,20 @@
 - provide(:title, @post.title)
-%p
-  %b Title:
-  = @post.title
-%p
-  %b Текст:
-  = @post.text
-%p
-  %b Опубликовать:
-  = @post.published
+#showpost
+  %h1= @post.title
+  %p
+    = @post.text
+  %p
+    %b Опубликован:
+    = @post.published
 
-%p
-  %b Теги:
-  = raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
+  %p
+    %b Теги:
+    = raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')
 
-= link_to 'Редактировать', edit_post_path(@post)
-\|
-= link_to 'Назад', posts_path
+  = link_to 'Редактировать', edit_post_path(@post)
+  \|
+  = link_to 'Назад', posts_path
+%hr
 
 = render "comments/comments"
 = render "comments/form"

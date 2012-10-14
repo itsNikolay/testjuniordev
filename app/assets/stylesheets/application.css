@@ -97,6 +97,7 @@ blockquote {
 html > body #centerColumn {
   margin-left: 17.50em;
   margin-right: 2.25em;
+
 }
 
 #tags {
@@ -116,6 +117,17 @@ html > body #centerColumn {
     color: #cc0000;
   }
 }
+
+table, td, th {
+  border: 1px;
+  border-bottom: 1px solid black;
+  padding: 5px 5px;
+}
+th {
+background-color:green;
+color:white;
+}
+
 .pull-right {
   float: right;
 }

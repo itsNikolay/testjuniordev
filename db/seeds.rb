@@ -1,10 +1,23 @@
 # encoding: utf-8
 
+
+
+
+# ИНФОРМАЦИЯ ДЛЯ ВХОДА ПОД ПОЛЬЗОВАТЕЛЯМИ:
+#
+# Пользователь: example1@email.com, example2@email.com, example3@email.com
+# Пароль: foobar
+
+
+
+
+
 #Before seeding we have to destroy all previous data.
 User.delete_all
 Post.delete_all
 Comment.delete_all
 
+# Data
 title1 = %{Мост Кеннеди (Бонн)}
 text1 = %{Мост Кеннеди (нем. Kennedybrücke) — стальной сварной арочный мост через Рейн, расположенный в городе Бонне (Германия, федеральная земля Северный Рейн — Вестфалия) на расстоянии 654,9 км от истока реки. Мост соединяет городские районы Бёйель и Бонн (de: Bonn (Stadtbezirk)). По мосту проходит федеральная автодорога B56 (de: Bundesstraße 56).}
 
@@ -14,6 +27,7 @@ text2 = %{Международный аэропорт Боа-Виста – Ат
 comment1 = %{Хорошая статья. Жду продолжения.}
 comment2 = %{Могу выложить фотографии данного места.}
 
+#Seeding
 3.times do |n|
   email = "example#{n}@email.com"
     password = "foobar"
