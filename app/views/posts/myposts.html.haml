@@ -1,16 +1,16 @@
-- provide(:title, 'Listing posts')
-%h1 Listing posts
+- provide(:title, 'Список постов')
+%h1 Список постов
 
 %table
   %tr
     %th Title
-    %th Text
-    %th Published
-    %th Created_at
-    %th User
-    %th Comments
-    %th Published?
-    %th Unpublish!
+    %th Текст
+    %th Опубликован
+    %th Дата создания
+    %th Автор
+    %th Комментарии
+    %th Опубликован?
+    %th Опубликовать!
     %th
     %th
     %th
@@ -27,7 +27,7 @@
         %td= check_box_tag "post_ids[]", post.id if post.published == false
         %td= link_to 'Show', post
         %td= link_to 'Edit', edit_post_path(post)
-        %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Вы уверены?' }
     = submit_tag "Mark as Publish"
 %br
 

@@ -1,16 +1,20 @@
 - provide(:title, 'Listing posts')
-%h1 Listing posts
+%h1 Список постов
+- if params[:tag]
+  %h2 
+    Выборка по тегу: 
+    = params[:tag]
 
 %table
   %tr
     %th Title
-    %th Text
-    %th Published
-    %th Created_at
-    %th User
-    %th Comments
-    %th Published?
-    %th Tags
+    %th Текст
+    %th Опубликован
+    %th Дата создания
+    %th Автор
+    %th Комментарии
+    %th Опубликован?
+    %th Теги
     %th
     %th
     %th
@@ -27,7 +31,7 @@
       %td= post.tag_list
       %td= link_to 'Show', post
       %td= link_to 'Edit', edit_post_path(post)
-      %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
+      %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Вы уверены?' }
 
 %br
 

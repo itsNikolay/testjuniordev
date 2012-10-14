@@ -1,8 +1,11 @@
+%h3 Комментарии:
 #comments
   - @comments.each do |comment|
     .username
-      = comment.user.email
+      %b
+        = comment.user.email
       said: #{link_to "Edit", [:edit, @commentable, comment] if comment.user == current_user}
       = link_to 'Destroy', [@commentable, comment] , method: :delete, data: { confirm: 'Are you sure?' }
     .comment
-      = comment.content
+      %p
+        = comment.content

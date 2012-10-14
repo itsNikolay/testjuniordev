@@ -2,13 +2,13 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :title
+    = f.input :title, :input_html => {:size => 41}
     = f.input :text
     - if @post.new_record?
       = f.input :published, input_html: { checked: true }
     = f.input :created_at
     .field
-    = f.label :tag_list, "Tags (separated by commas)"
+    = f.label :tag_list, "Теги (разделенные запятой)"
     = f.text_field :tag_list
 
   .form-actions

@@ -79,24 +79,7 @@ blockquote {
     font-size: 1em;
     letter-spacing: .1em;
   }
-  ul {
-    margin: 1.5em 0 0 0;
-    padding: 0;
-    list-style: none;
-  }
-  li {
-    margin: 0 0 .4em 0;
-    padding: 0;
-    a {
-      margin: 0 0 0 .2em;
-      color: #cc0000;
-      text-decoration: none;
-      &:hover {
-        color: #ffffff;
-        text-decoration: underline;
-      }
-    }
-  }
+
 }
 
 #centerColumn {
