@@ -4,8 +4,9 @@
     .username
       %b
         = comment.user.email
-      said: #{link_to "Edit", [:edit, @commentable, comment] if comment.user == current_user}
-      = link_to 'Destroy', [@commentable, comment] , method: :delete, data: { confirm: 'Are you sure?' }
+      - if comment.user == current_user
+        говорит: #{link_to "Ред.", [:edit, @commentable, comment] if comment.user == current_user}
+        = link_to 'Удалить', [@commentable, comment] , method: :delete, data: { confirm: 'Are you sure?' }
     .comment
       %p
         = comment.content

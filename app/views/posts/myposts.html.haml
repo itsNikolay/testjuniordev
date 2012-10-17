@@ -12,8 +12,8 @@
     %th Опубликован?
     %th Опубликовать!
     %th
-    %th
-    %th
+    -if current_user
+      %th
   = form_tag published_posts_path, :method => :put do
     - @posts.each do |post|
       %tr
@@ -25,9 +25,11 @@
         %td= post.comments.count
         %td= post.published
         %td= check_box_tag "post_ids[]", post.id if post.published == false
-        %td= link_to 'Show', post
-        %td= link_to 'Edit', edit_post_path(post)
-        %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Вы уверены?' }
+        %td= link_to 'Показать', post
+        -if post.user == current_user
+          %td
+            = link_to 'Ред.', edit_post_path(post)
+            = link_to 'Удалить', post, method: :delete, data: { confirm: 'Are you sure?' }
     = submit_tag "Mark as Publish"
 %br
 

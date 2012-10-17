@@ -16,8 +16,9 @@
     %th Опубликован?
     %th Теги
     %th
-    %th
-    %th
+    -if current_user
+      %th
+
 
   - @posts.each do |post|
     %tr
@@ -29,9 +30,11 @@
       %td= post.comments.count
       %td= post.published
       %td= post.tag_list
-      %td= link_to 'Show', post
-      %td= link_to 'Edit', edit_post_path(post)
-      %td= link_to 'Destroy', post, method: :delete, data: { confirm: 'Вы уверены?' }
+      %td= link_to 'Покзать', post
+      -if post.user == current_user
+        %td
+          = link_to 'Ред.', edit_post_path(post)
+          = link_to 'Удалить', post, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

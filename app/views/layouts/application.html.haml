@@ -9,20 +9,20 @@
   #header
     %h1
       = link_to "Тестовое задание", root_path
-
-  #leftColumn
     = render 'layouts/navigation'
 
+  #leftColumn
     %h2 Разделы
     %ul
       %li
         = link_to 'На главную страницу (список сегодняшних постов)', root_path
       %li
         = link_to 'Список всех созданных постов', posts_path
-      %li
-        = link_to 'Добавить пост', new_post_path
-      %li
-        = link_to "Мои посты", myposts_path
+      - if user_signed_in?
+        %li
+          = link_to 'Добавить пост', new_post_path
+        %li
+          = link_to "Мои посты", myposts_path
       %li
         = link_to "Задание по верстке", statics_index_path
 

@@ -63,6 +63,12 @@ blockquote {
   }
 }
 
+ul.user {
+  float: right;
+  position: relative;
+  top: -50px;
+}
+
 #leftColumn {
   position: absolute;
   left: 2.25em;
@@ -125,14 +131,10 @@ html > body #centerColumn {
   padding: 1em .5em 2em .5em;
 
 }
-
-
-
-table, td, th {
-  border: 1px;
-  border-bottom: 1px solid black;
-  padding: 5px 5px;
+table {
+  font-size: 14px;
 }
+
 th {
 background-color:green;
 color:white;
