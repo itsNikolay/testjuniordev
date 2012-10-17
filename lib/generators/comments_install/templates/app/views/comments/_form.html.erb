@@ -1,7 +1,0 @@
-<div class="span5 well">
-<%= simple_form_for [@commentable, @comment] do |f| %>
-<%= f.error_notification %>
-<%= f.input :content, :label => 'Comment', :placeholder => 'Type in your message', :input_html => { :maxlength => 1000 }, input_html: { class: 'span5', rows: "5" } %>
-<%= f.button :submit, class: 'btn btn-info' %>
-<% end %>
-</div>

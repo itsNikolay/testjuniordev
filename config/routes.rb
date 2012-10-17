@@ -1,5 +1,7 @@
 Testjuniordev::Application.routes.draw do
 
+  root :to => "posts#today"
+
   resources :posts do
     collection do
       put :published
@@ -7,16 +9,11 @@ Testjuniordev::Application.routes.draw do
     resources :comments
   end
 
-  #map.resources :posts, :collection => { :published => :put }
-
   devise_for :users
 
-  #match 'statics/:action', :controller => "statics"
   get "statics/index"
   get 'tags/:tag', to: 'posts#index', as: :tag
   match "myposts" => "posts#myposts"
-
-  root :to => "posts#today"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
