@@ -82,6 +82,31 @@ blockquote {
 
 }
 
+#tags {
+    margin: 0 0 .5em 0;
+    width: 10em;
+    float: left;
+    border: none;
+    text-align: left;
+    img {
+      border: none;
+    }
+    p {
+      margin: 0 0 .25em 0;
+    }
+  }
+  
+  a.l { 
+    font-size: 1.5em; 
+  }
+  a.m {
+    font-size: 1.2em;
+  }
+  a.s {
+    font-size: 1em;
+  }
+}
+
 #centerColumn {
   right: 2.25em;
   margin-top: .2em;
@@ -100,23 +125,7 @@ html > body #centerColumn {
 
 }
 
-#tags {
-  margin: 0 0 .5em 0;
-  width: 10em;
-  float: left;
-  border: none;
-  text-align: left;
-  img {
-    border: none;
-  }
-  p {
-    margin: 0 0 .25em 0;
-  }
-  a {
-    font-size: .7em;
-    color: #cc0000;
-  }
-}
+
 
 table, td, th {
   border: 1px;
