@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 %html
-%head
-  %title= content_for?(:title) ? yield(:title) : "Application"
-  = stylesheet_link_tag    "application", :media => "all"
-  = javascript_include_tag "application"
-  = csrf_meta_tags
-%body
-  #header
-    %h1
-      = link_to "Тестовое задание", root_path
-    = render 'layouts/navigation'
-
-  #leftColumn
-    %h2 Разделы
-    %ul
-      %li
-        = link_to 'На главную страницу (список сегодняшних постов)', root_path
-      %li
-        = link_to 'Список всех созданных постов', posts_path
-      - if user_signed_in?
+  %head
+    %title= content_for?(:title) ? yield(:title) : "Application"
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .header
+      %h1.logo
+        = link_to "Тестовое задание", root_path
+      = render 'layouts/navigation'
+    .navbar
+      %h2 Разделы
+      %ul.menu
         %li
-          = link_to 'Добавить пост', new_post_path
+          = link_to 'На главную страницу (список сегодняшних постов)', root_path
         %li
-          = link_to "Мои посты", myposts_path
-      %li
-        = link_to "Задание по верстке", statics_index_path
+          = link_to 'Список всех созданных постов', posts_path
+        - if user_signed_in?
+          %li
+            = link_to 'Добавить пост', new_post_path
+          %li
+            = link_to "Мои посты", myposts_path
+        %li
+          = link_to "Задание по верстке", statics_index_path
 
-    #tags
-      %h2 Облако тегов
-      #tag_cloud
-        - tag_cloud Post.tag_counts, %w[s m l] do |tag, css_class|
-          = link_to tag.name, tag_path(tag.name), class: css_class
+      .tags
+        %h2 Облако тегов
+        %p.tag_cloud
+          - tag_cloud Post.tag_counts, %w[s m l] do |tag, css_class|
+            = link_to tag.name, tag_path(tag.name), class: css_class
 
 
-  #centerColumn
-    = render 'layouts/messages'
-    = yield
+    .content
+      = render 'layouts/messages'
+      = yield
 

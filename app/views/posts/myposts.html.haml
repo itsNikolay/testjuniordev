@@ -1,7 +1,7 @@
 - provide(:title, 'Список постов')
 %h1 Список постов
 
-%table
+%table.postslist
   %tr
     %th Title
     %th Текст
@@ -30,7 +30,9 @@
           %td
             = link_to 'Edit', edit_post_path(post)
             = link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
-    = submit_tag "Mark as Publish"
+    %tr
+      %td
+        = submit_tag "Mark as Publish"
 %br
 
 = paginate @posts
