@@ -122,6 +122,7 @@ blockquote {
 html > body #centerColumn {
   margin-left: 17.50em;
   margin-right: 2.25em;
+  padding: 1em .5em 2em .5em;
 
 }
 
