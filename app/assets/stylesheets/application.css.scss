@@ -12,7 +12,6 @@
  *= require_tree .
  */
 
-
 body {
   margin: 0;
   padding: 0;
@@ -49,9 +48,9 @@ blockquote {
   background-color: #cccccc;
   border: 1px solid #eeeeee;
   h1 {
-    margin: 0;
-    padding: 0;
-    font-size: 1.2em;
+    margin: 15px;
+    padding: 15px;
+    font-size: 1.5em;
   }
   h3 {
     margin: 0;
@@ -66,7 +65,7 @@ blockquote {
 ul.user {
   float: right;
   position: relative;
-  top: -50px;
+  top: -70px;
 }
 
 #leftColumn {
@@ -80,36 +79,33 @@ ul.user {
   border: 1px solid #eeeeee;
   font-size: .9em;
   h2 {
-    margin: 0 0 -1em 0;
     padding: 0;
-    font-size: 1em;
+    font-size: 1.5em;
     letter-spacing: .1em;
   }
-
 }
 
 #tags {
-    margin: 0 0 .5em 0;
-    width: 10em;
-    float: left;
+  margin: 0 0 .5em 0;
+  float: left;
+  border: none;
+  text-align: left;
+  img {
     border: none;
-    text-align: left;
-    img {
-      border: none;
+  }
+  p {
+    margin: 0 0 .25em 0;
+  }
+  a {
+    &.l {
+      font-size: 1.5em;
     }
-    p {
-      margin: 0 0 .25em 0;
+    &.m {
+      font-size: 1.2em;
     }
-  }
-  
-  a.l { 
-    font-size: 1.5em; 
-  }
-  a.m {
-    font-size: 1.2em;
-  }
-  a.s {
-    font-size: 1em;
+    &.s {
+      font-size: 1em;
+    }
   }
 }
 
@@ -129,15 +125,15 @@ html > body #centerColumn {
   margin-left: 17.50em;
   margin-right: 2.25em;
   padding: 1em .5em 2em .5em;
-
 }
+
 table {
   font-size: 14px;
 }
 
 th {
-background-color:green;
-color:white;
+  background-color: green;
+  color: white;
 }
 
 .pull-right {
@@ -146,23 +142,27 @@ color:white;
 
 .clearfix {
   *zoom: 1;
+  &:before {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+    clear: both;
+  }
 }
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.clearfix:after {
-  clear: both;
-}
+
 .hide-text {
-  font: 0/0 a;
+  font: 0 / 0 a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
   border: 0;
 }
+
 .input-block-level {
   display: block;
   width: 100%;
@@ -171,6 +171,7 @@ color:white;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 .alert {
   padding: 8px 35px 8px 14px;
   margin-bottom: 20px;
@@ -181,42 +182,46 @@ color:white;
   -moz-border-radius: 4px;
   border-radius: 4px;
   color: #c09853;
+  h4 {
+    margin: 0;
+  }
+  .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    line-height: 20px;
+  }
 }
-.alert h4 {
-  margin: 0;
-}
-.alert .close {
-  position: relative;
-  top: -2px;
-  right: -21px;
-  line-height: 20px;
-}
+
 .alert-success {
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #468847;
 }
-.alert-danger,
-.alert-error {
+
+.alert-danger, .alert-error {
   background-color: #f2dede;
   border-color: #eed3d7;
   color: #b94a48;
 }
+
 .alert-info {
   background-color: #d9edf7;
   border-color: #bce8f1;
   color: #3a87ad;
 }
+
 .alert-block {
   padding-top: 14px;
   padding-bottom: 14px;
-}
-.alert-block > p,
-.alert-block > ul {
-  margin-bottom: 0;
-}
-.alert-block p + p {
-  margin-top: 5px;
+  > {
+    p, ul {
+      margin-bottom: 0;
+    }
+  }
+  p + p {
+    margin-top: 5px;
+  }
 }
 
 
@@ -273,5 +278,157 @@ button.close {
   background: transparent;
   border: 0;
   -webkit-appearance: none;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  line-height: 18px;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+
+
+#Layer-1 {
+  margin-left: auto;
+  margin-right: auto;
+  background-image: image_url('carousel/Layer-1.png');
+  width: 600px;
+  height: 195px;
+}
+
+#Layer-2 {
+  margin: 0px 0px 0px 45px;
+  background-image: image_url('carousel/Layer-2.png');
+  width: 510px;
+  height: 195px;
+
+}
+
+#Layer-3 {
+text-align: center;
+  ul, li {
+    list-style-type: none;
+    padding: 0px;
+  }
+  ul.nav {
+    position: relative;
+    padding: 5px 5px;
+    left: 30px;
+    top: -70px;
+    width: 440px;
+    height: 38px;
+    background-image: image_url('carousel/Layer-4.png');
+      li {
+        float: left;
+        display: inline;
+      }
+      img.nav {
+        width: 30px;
+        height: 30px;
+        margin: 5px 0px 0px 0px;
+      }
+      a.navLink:hover {
+        opacity: 0.6;
+      }
+      img.promoText {
+        padding: 5px 10px;
+        width: 185px;
+        height: 27px;
+      }
+
+      a.spriteButton {
+        display:block; /* Ссылки будут блоками. */
+        width: 135px; /* Ширина блока 175 пикселей по ширине нашей "двойной" картинки */
+        height:22px; /* Высота блока 40 - это половина высоты нашей двойной картинки */
+        display:block;
+        line-height:0px;
+        text-align:center;
+        background-image: image_url('carousel/rsz_but.png');
+        background-repeat:no-repeat;
+        }
+
+      /* Стиль ссылки при наведённом курсоре */
+      a.spriteButton:hover {
+        background-position:0 -25px;
+        color: #fff;
+      }
+      li.but {
+        margin: 9px 15px;
+      }
+  }
+  img.image {
+    margin: 10px 0px 0px 0px;
+    left: 0px;
+    width: 475px;
+    height: 190px;
+  }
+}
+
+.carousel {
+  width: 470px;
+  height: 180px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  li {
+    display:none;
+  }
+
+  .is-showing {
+    display: inline;
+  }
 }
 

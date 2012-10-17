@@ -30,11 +30,11 @@
       %td= post.comments.count
       %td= post.published
       %td= post.tag_list
-      %td= link_to 'Покзать', post
+      %td= link_to 'Show', post
       -if post.user == current_user
         %td
-          = link_to 'Ред.', edit_post_path(post)
-          = link_to 'Удалить', post, method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to 'Edit', edit_post_path(post)
+          = link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

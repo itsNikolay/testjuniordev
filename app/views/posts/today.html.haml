@@ -21,11 +21,11 @@
       %td= post.created_at
       %td= post.user.email
       %td= post.comments.count
-      %td= link_to 'Показать', post
+      %td= link_to 'Show', post
       -if post.user == current_user
         %td
-          = link_to 'Ред.', edit_post_path(post)
-          = link_to 'Удалить', post, method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to 'Edit', edit_post_path(post)
+          = link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
