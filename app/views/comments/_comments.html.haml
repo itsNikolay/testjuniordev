@@ -1,10 +1,11 @@
 %h3 Комментарии:
 #comments
   - @comments.each do |comment|
-    .username
+    .useremail
       %b
         = comment.user.email
-      - if comment.user == current_user
+    - if comment.user == current_user
+      .edit-comment-links
         говорит: #{link_to "Ред.", [:edit, @commentable, comment] if comment.user == current_user}
         = link_to 'Удалить', [@commentable, comment] , method: :delete, data: { confirm: 'Are you sure?' }
     .comment

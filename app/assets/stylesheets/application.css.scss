@@ -12,12 +12,32 @@
  *= require_tree .
  */
 
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
 body {
   margin: 0;
   padding: 0;
   background-color: #ffffff;
   font-family: Verdana, Arial, Helvetica, sans-serif;
-  font-size: 1em;
 }
 
 a {
@@ -29,33 +49,16 @@ a {
   }
 }
 
-blockquote {
-  margin: 1em;
-  padding: .5em;
-  font-size: .9em;
-  background-color: #cccccc;
-  border-top: 1px solid #999999;
-  border-bottom: 1px solid #999999;
-  p {
-    margin: .2em;
-  }
-}
-
 .header {
-  margin: 2em 2em 0 2em;
-  padding: 1em 1.5em;
-  height: 5em;
+  margin: 30px 30px 0 30px;
+  padding: 17px;
+  height: 80px;
   background-color: #cccccc;
   border: 1px solid #eeeeee;
   h1 {
     margin: 15px;
     padding: 15px;
-    font-size: 1.5em;
-  }
-  h3 {
-    margin: 0;
-    padding: 0;
-    font-size: .9em;
+    font-size: 30px;
   }
   a {
     text-decoration: none;
@@ -68,109 +71,78 @@ ul.userbar {
   top: -70px;
 }
 
-.navbar {
+
+
+.menu {
   position: absolute;
-  left: 2.25em;
-  top: 10.3em;
-  width: 14em;
-  margin: 0;
-  padding: 1em .5em 2em .5em;
+  left: 30px;
+  top: 150px;
+  width: 200px;
+  padding: 20px 10px 10px 5px;
   background: #cccccc;
   border: 1px solid #eeeeee;
-  font-size: .9em;
+  font-size: 15px;
   h2 {
-    padding: 0;
-    font-size: 1.5em;
-    letter-spacing: .1em;
+    font-size: 20px;
+  }
+  ul {
+    margin: 0px 15px;
   }
 }
 
-.tags {
-  margin: 0 0 .5em 0;
+.tag_cloud {
+  position: absolute;
+  left: 30px;
+  top: 370px;
+  width: 200px;
+  padding: 20px 10px 10px 5px;
+  background: #cccccc;
+  border: 1px solid #eeeeee;
+  font-size: 15px;
   float: left;
-  border: none;
   text-align: left;
-  img {
-    border: none;
+  h2 {
+    font-size: 20px;
   }
-  p.tag_cloud {
-    margin: 0 0 .25em 0;
-    a {
-    &.l {
-      font-size: 1.5em;
-    }
-    &.m {
-      font-size: 1.2em;
-    }
-    &.s {
-      font-size: 1em;
+    ul.tags {
+      list-style-type: none;
+      li {
+        display: inline;
+      .l {
+        font-size: 25px;
+      }
+      .m {
+        font-size: 20px;
+      }
+      .s {
+        font-size: 15px;
+      }
     }
   }
-  }
-  
 }
 
 .content {
-  right: 2.25em;
-  margin-top: .2em;
-  margin-left: 17.50em;
-  margin-right: 2.25em;
-  margin-left: 17.50em;
-  margin-right: 2.25em;
-  padding: 1em .5em 2em .5em;
+  right: 250px;
+  margin-top: 5px;
+  margin-left: 250px;
+  margin-right: 30px;
+  padding: 10px 10px 10px 10px;
   background: #cccccc;
-  font-size: .9em;
-}
+  font-size: 15px;
+  h1 {
 
-html > body .content {
-  margin-left: 17.50em;
-  margin-right: 2.25em;
-  padding: 1em .5em 2em .5em;
+    font-size: 30px;
+  }
 }
 
 table {
   font-size: 14px;
-}
-
-th {
-  background-color: green;
-  color: white;
-}
-
-.pull-right {
-  float: right;
-}
-
-.clearfix {
-  *zoom: 1;
-  &:before {
-    display: table;
-    content: "";
-    line-height: 0;
+  th {
+    background-color: green;
+    color: white;
+    vertical-align:middle;
+    padding: 5px;
   }
-  &:after {
-    display: table;
-    content: "";
-    line-height: 0;
-    clear: both;
-  }
-}
-
-.hide-text {
-  font: 0 / 0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-
-.input-block-level {
-  display: block;
-  width: 100%;
-  min-height: 30px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 .alert {
@@ -186,111 +158,16 @@ th {
   h4 {
     margin: 0;
   }
-  .close {
-    position: relative;
-    top: -2px;
-    right: -21px;
-    line-height: 20px;
-  }
 }
 
-.alert-success {
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-  color: #468847;
-}
-
-.alert-danger, .alert-error {
-  background-color: #f2dede;
-  border-color: #eed3d7;
-  color: #b94a48;
-}
-
-.alert-info {
-  background-color: #d9edf7;
-  border-color: #bce8f1;
-  color: #3a87ad;
-}
-
-.alert-block {
-  padding-top: 14px;
-  padding-bottom: 14px;
-  > {
-    p, ul {
-      margin-bottom: 0;
-    }
-  }
-  p + p {
-    margin-top: 5px;
-  }
-}
-
-
-
-
-
-.clearfix {
-  *zoom: 1;
-}
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.clearfix:after {
-  clear: both;
-}
-.hide-text {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-.input-block-level {
-  display: block;
-  width: 100%;
-  min-height: 30px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.close {
-  float: right;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 20px;
-  color: #000000;
-  text-shadow: 0 1px 0 #ffffff;
-  opacity: 0.2;
-  filter: alpha(opacity=20);
-}
-.close:hover {
-  color: #000000;
-  text-decoration: none;
-  cursor: pointer;
-  opacity: 0.4;
-  filter: alpha(opacity=40);
-}
-button.close {
-  padding: 0;
-  cursor: pointer;
-  background: transparent;
-  border: 0;
-  -webkit-appearance: none;
-}
-
-body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  line-height: 18px;
+.notice {
+  color: green;
 }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   line-height: 18px;
+  padding: 10px 10px;
 }
 
 pre {
@@ -305,40 +182,6 @@ div {
   }
 }
 
-
-#notice {
-  color: green;
-}
-
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
-
-
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
-  }
-  ul li {
-    font-size: 12px;
-    list-style: square;
-  }
-}
 
 
 
@@ -432,4 +275,3 @@ text-align: center;
     display: inline;
   }
 }
-

@@ -10,9 +10,9 @@
       %h1.logo
         = link_to "Тестовое задание", root_path
       = render 'layouts/navigation'
-    .navbar
+    .menu
       %h2 Разделы
-      %ul.menu
+      %ul
         %li
           = link_to 'На главную страницу (список сегодняшних постов)', root_path
         %li
@@ -25,11 +25,11 @@
         %li
           = link_to "Задание по верстке", statics_index_path
 
-      .tags
-        %h2 Облако тегов
-        %p.tag_cloud
-          - tag_cloud Post.tag_counts, %w[s m l] do |tag, css_class|
-            = link_to tag.name, tag_path(tag.name), class: css_class
+    .tag_cloud
+      %h2 Облако тегов
+      %ul.tags
+        - tag_cloud Post.tag_counts, %w[s m l] do |tag, css_class|
+          %li= link_to tag.name, tag_path(tag.name), class: css_class
 
 
     .content
