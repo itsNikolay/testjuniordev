@@ -14,37 +14,94 @@
 //= require jquery_ujs
 //= require_tree .
 $(document).ready(function() {
-    slideShow();
+  PhotoSlider.init();
 });
 
-function slideShow() {
-    var slides = $('.carousel li');
-    var previousIndex = 0, currentIndex = 0;
-    slides.hide();
-    slides.eq(currentIndex).show();
+var PhotoSlider = {
+    jThis: null,
+    jSlides: null,
+    jPrev: null,
+    jNext: null,
 
-    function nextSlide() {
+    init: function() {
+     this.jThis = $('.photo-slider');
+     this.jSlides = $('.photo-slider .carousel li');
+     this.jPrev = $('.photo-slider .prev');
+     this.jNext = $('.photo-slider .next');
 
-        previousIndex = currentIndex;
+     this.previousIndex = 0;
+     this.currentIndex = 0;
 
-        if (currentIndex < slides.length - 1)
-            currentIndex++;
-        else
-            currentIndex = 0;
+     this.jSlides.hide();
+     this.jSlides.eq(this.currentIndex).show();
 
-        switchSlides();
-    }
-    function prevSlide() {
+     this.jNext.click(this.nextSlide);
+//     $(".prev").click(this.prevSlide);
+
+     return true;
+ },
+
+    length: function() { return this.jSlides.length; },
+
+    nextSlide: function() {
+     //if (_this == undefined)
+     var _this = PhotoSlider;
+
+     _this.previousIndex = _this.currentIndex;
+
+     if (_this.currentIndex < _this.length() - 1)
+         _this.currentIndex++;
+     else
+         _this.currentIndex = 0;
+
+     _this.switchSlides();
+     return true;
+ },
+    prevSlide: function() {
         previousIndex = currentIndex;
         if(currentIndex < slides.length + 1) currentIndex--;
         else currentIndex = 0;
         switchSlides();
-    }
-    function switchSlides() {
-        slides.eq(currentIndex).fadeIn(800);
-        slides.eq(previousIndex).fadeOut(800);
+        return true;
+    },
+
+    switchSlides: function() {
+        this.jSlides.eq(this.currentIndex).fadeIn(800);
+        this.jSlides.eq(this.previousIndex).fadeOut(800);
+        return true;
     }
 
-    $(".next").click(nextSlide);
-    $(".prev").click(prevSlide);
-}
+};
+//
+//
+//photoslider.init = function() {
+//    var slides = $('.carousel li');
+//    var previousIndex = 0, currentIndex = 0;
+//    slides.hide();
+//    slides.eq(currentIndex).show();
+//
+//    function nextSlide() {
+//
+//        previousIndex = currentIndex;
+//
+//        if (currentIndex < slides.length - 1)
+//            currentIndex++;
+//        else
+//            currentIndex = 0;
+//
+//        switchSlides();
+//    }
+//    function prevSlide() {
+//        previousIndex = currentIndex;
+//        if(currentIndex < slides.length + 1) currentIndex--;
+//        else currentIndex = 0;
+//        switchSlides();
+//    }
+//    function switchSlides() {
+//        slides.eq(currentIndex).fadeIn(800);
+//        slides.eq(previousIndex).fadeOut(800);
+//    }
+//
+//    $(".next").click(nextSlide);
+//    $(".prev").click(prevSlide);
+//}
