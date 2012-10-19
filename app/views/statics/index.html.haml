@@ -1,22 +1,20 @@
 - provide(:title, 'Задание по верстке')
-#Layer-1
-  #Layer-2
-    #Layer-3
-      %ul.carousel
-        %li.is-showing
-          = image_tag "carousel/Layer-3.png", alt: "", class: "image"
-        %li.is-showing
-          = image_tag "carousel/prettycheeckbaby.jpg", alt: "", class: "image"
-        %li.is-showing
-          = image_tag "carousel/prettysunnybaby.jpg", alt: "", class: "image"
-        %li.is-showing
-          = image_tag "carousel/prettyglassesbaby.jpg", alt: "", class: "image"
-      %ul.nav
-        %li.nav
-          = link_to (image_tag "carousel/Layer-7.png", class: "nav"), "#", class: "navLink prev"
-        %li.nav
-          = link_to (image_tag "carousel/Layer-6.png", class: "nav"), "#", class: "navLink next"
-        %li.nav
-          = image_tag "carousel/Layer-5.png", class: "promoText"
-        %li.but
-          = link_to "", root_path, class: "spriteButton"
+.photo-slider
+  %ul.carousel
+    %li.is-showing
+      = image_tag "carousel/Layer-3.png", alt: "", class: "image"
+    %li.is-showing
+      = image_tag "carousel/prettycheeckbaby.jpg", alt: "", class: "image"
+    %li.is-showing
+      = image_tag "carousel/prettysunnybaby.jpg", alt: "", class: "image"
+    %li.is-showing
+      = image_tag "carousel/prettyglassesbaby.jpg", alt: "", class: "image"
+  %ul.nav
+    %li.nav
+      = link_to (image_tag "carousel/Layer-7.png", class: "nav"), "#", class: "navLink prev"
+    %li.nav
+      = link_to (image_tag "carousel/Layer-6.png", class: "nav"), "#", class: "navLink next"
+    %li.nav
+      = image_tag "carousel/Layer-5.png", class: "promoText"
+    %li.but
+      = link_to "", root_path, class: "spriteButton"
