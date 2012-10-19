@@ -1,3 +1,3 @@
 - flash.each do |name, msg|
-  %div{:class => "page-flashes #{name}"}
-    = content_tag :span, msg
+  .page-flashes{:class => name}
+    = msg

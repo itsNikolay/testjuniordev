@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!!!
 %html
   %head
     %title= content_for?(:title) ? yield(:title) : "Application"
@@ -6,36 +6,13 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .page-header
-      %h1.logo
-        = link_to "Тестовое задание", root_path
-      = render 'layouts/navigation'
+    = render 'layouts/page_header'
     = render 'layouts/messages'
     .page-container
       .page-container-lcol
-
-        .page-menu
-          %h2 Разделы
-          %ul
-            %li
-              = link_to 'На главную страницу (список сегодняшних постов)', root_path
-            %li
-              = link_to 'Список всех созданных постов', posts_path
-            - if user_signed_in?
-              %li
-                = link_to 'Добавить пост', new_post_path
-              %li
-                = link_to "Мои посты", myposts_path
-            %li
-              = link_to "Задание по верстке", statics_index_path
-
-        .page-tags-cloud
-          %h2 Облако тегов
-          %ul.tags
-            - tag_cloud Post.tag_counts, %w[s m l] do |tag, css_class|
-              %li= link_to tag.name, tag_path(tag.name), class: css_class
-
+        = render 'layouts/page_menu'
+        = render 'layouts/page_tags_cloud'
       .page-container-rcol
         .page-content
           = yield
-      .div-clear
+      .page-container-end
